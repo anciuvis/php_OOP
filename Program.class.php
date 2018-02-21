@@ -5,7 +5,7 @@ class Program {
 	public function run(SvgRenderer $renderer) { // class injection
 		echo "Program is running...<br>";
 
-		$rectangle = new Square();
+		$rectangle = new Square(); // susikuria kintamasis $this tam objekte iskart kai ivyksta instancija
 		$rectangle->location->set(0, 0);
 		$rectangle->setSize(100);
 		$rectangle->setColor('0, 255, 255');

@@ -16,6 +16,10 @@ class SvgRenderer {
 		$svg = '<rect x="' .$x. '" y="' .$y. '" width="' .$width. '" height="' .$height. '" style="fill:rgba(' .$color. ', ' .$alpha. ');" transform="translate(' .$tx. ', ' .$ty. ') rotate(' .$angle. ' ' .$rotx. ' ' .$roty. ')" />';
 		// echo $svg;
 		// $elements[] = $svg;
+
+		if ($width > $this->width || $height > $this->height) {
+			throw new Exception("Element can't be bigger than the viewport");
+		}
 		array_push($this->elements, $svg);
 	}
 
@@ -40,7 +44,7 @@ class SvgRenderer {
 		// echo 'engine is running...';
 		$svg = '<svg width="' .$this->width. '" height="' .$this->height. '" style="background-color: ' .$this->color. '">';
 		$svg .= implode ('', $this->elements);
-		$svg .= '</svg>';
+		$svg .= 'Sorry, your browser does not support inline SVG.</svg>';
 
 		print_R ($svg);
 	}

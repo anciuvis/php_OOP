@@ -12,7 +12,13 @@
 
 		public function draw(SvgRenderer $renderer) {
 			// kviecia grafkos varikli:
-			$renderer->drawRect($this->location->x, $this->location->y, $this->width, $this->height, $this->color, $this->alpha, $this->tx, $this->ty, $this->angle, $this->rotx, $this->roty);
+			try {
+				$renderer->drawRect($this->location->x, $this->location->y, $this->width, $this->height, $this->color, $this->alpha, $this->tx, $this->ty, $this->angle, $this->rotx, $this->roty);
+			} catch(Exception $error) {
+				// $log->message($error->getMessage())
+				echo $error->getMessage();
+				// var_dump($error);
+			}
 		}
 
 		public function setSize($width, $height) {
