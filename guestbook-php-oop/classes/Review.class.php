@@ -18,13 +18,13 @@ class Review {
 		return $reviews;
 	}
 	public function getFeatured() {
-		$que = 'SELECT * FROM reviews WHERE featured = 1 ORDER BY id';
+		$que = 'SELECT * FROM reviews WHERE featured = 1 ORDER BY date DESC LIMIT 2';
 		$query = $this->pdo->prepare($que);
 		$query->execute();
 		$reviews = $query->fetchAll(PDO::FETCH_ASSOC);
 		return $reviews;
 	}
-	public function getUnfeatured() {
+	public function getNonfeatured() {
 		$que = 'SELECT * FROM reviews WHERE featured = 0 ORDER BY id';
 		$query = $this->pdo->prepare($que);
 		$query->execute();
@@ -32,10 +32,10 @@ class Review {
 		return $reviews;
 	}
 }
-$reviews = new Review();
-print_R($reviews->GetAll());
-echo '<br>---<br>';
-// var_dump($reviews);
-print_R($reviews->GetFeatured());
-echo '<br>---<br>';
-print_R($reviews->GetUnfeatured());
+// $reviews = new Review();
+// print_R($reviews->GetAll());
+// echo '<br>---<br>';
+// // var_dump($reviews);
+// print_R($reviews->GetFeatured());
+// echo '<br>---<br>';
+// print_R($reviews->GetNonfeatured());
