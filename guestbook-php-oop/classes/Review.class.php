@@ -10,6 +10,19 @@ class Review {
 		$db = new Database();
 		$this->pdo = $db->connect();
 	}
+	public function addReview($f_name, $l_name, $email, $review) {
+		$sql ='INSERT INTO reviews SET f_name = :f_name, l_name = :l_name, email = :email, review = :review';
+		$query = $this->pdo->prepare($sql);
+		$query->execute([
+			':f_name'=>$f_name,
+			':l_name'=>$l_name,
+			':email'=>$email,
+			':review'=>$review
+		]);
+		// Shows SQL query error info if any
+		// var_dump($query->errorInfo());
+	}
+
 	public function getAll() {
 		$que = 'SELECT * FROM reviews ORDER BY id';
 		$query = $this->pdo->prepare($que);
@@ -31,6 +44,7 @@ class Review {
 		$reviews = $query->fetchAll(PDO::FETCH_ASSOC);
 		return $reviews;
 	}
+
 }
 // $reviews = new Review();
 // print_R($reviews->GetAll());
