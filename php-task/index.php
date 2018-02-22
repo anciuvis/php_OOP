@@ -26,4 +26,8 @@ $date2 = new DateTime('2017-02-28');
 $interval = new Date($date1, $date2);
 $interval->difference($date1, $date2);
 
-$calc = new Calculator;
+$a = 5;
+$b = 4;
+$c = '+';
+$calc = new Calculator();
+$calc->getResult($a, $b, $c);
