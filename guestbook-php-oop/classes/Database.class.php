@@ -1,3 +1,6 @@
+<?php ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL| E_STRICT); ?>
 <?php
 class Database {
 	private $host;
@@ -12,10 +15,13 @@ class Database {
 		$this->pass = '';
 	}
 	public function connect() {
-		$db = "mysql:host=$this->host;dbname=$this->dbName";
-		$pdo = new PDO($db, $user, $pass);
+		$dbase = "mysql:host=$this->host;dbname=$this->dbName";
+		$pdo = new PDO($dbase, $this->user, $this->pass);
 		$pdo->exec('SET NAMES UTF8');
 
 		return $pdo;
 	}
 }
+
+// $db = new Database();
+// print_R($db->connect());
